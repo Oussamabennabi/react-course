@@ -1,0 +1,17 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: #23252c;
+}
+
+.card {
+	width: 550px;
+	height: 868px;
+	background-color: #1a1b21;
+  padding:44px 116px;
+	ruby-align: ;
+	background-color: #fbfb00;
+	font-stretch: ;
+}
