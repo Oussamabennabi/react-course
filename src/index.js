@@ -1,124 +1,96 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import './styles.css'
 function Form() {
-  
   const [formData, setFormData] = React.useState(
     {
-      firstName: "",
-      lastName: "",
-      comments: "",
-      ischecked: true,
-      employment: "",
-      colors:""
+      email: "",
+      password: "", 
+      cfPassword: "", 
+      checkbox:false
     }
-  );
-  console.log(formData.colors)
-  function change(event) {
-    const {name,value,checked,type} = event.target;
+  )
+  function change(e) {
+    const { name, value, checked, type } = e.target;
+
+    
     
     setFormData(prevData => {
-      return {
-        ...prevData,
-        [name]:type === "checkbox"  ? checked : value
+      return { 
+        ...prevData, 
+        [name]:type === "checkbox" ? checked:value
       }
     })
   }
   
-  return (
-    <div>
-      <form id="form" >
-          {/* <button type="submit">Submit</button>
-        <label htmlFor="first-name"></label>
-        <input
-            onChange={change} 
-            placeholder="First Name"
-            id="first-name"
-            type="text"
-            name="firstName"
-            value={formData.firstName}
-            
-        />
-          <label htmlFor="last-name"></label>
-        <input
-            onChange={change}
-            id="last-name"
-            type="text"
-            name="lastName"
-            placeholder="Last Name" 
-            value={formData.lastName}
-            />
+  
+  function handleSubmit(e) {
+    e.preventDefault();
+    const {password ,cfPassword,checkbox} = formData
+    if (password === "") {
+      alert(`please check your password and try again.`);
 
-          <input 
-              
-              id="checkbox"
-              name="ischecked"
-              checked={formData.ischecked}
-              type="checkbox"
-              onChange={change}
-              
-        />
-          <textarea
-                  value={formData.comments}
-                  onChange={change}
-                  name="comments" 
-        /> */}
+      return; 
+    }
+    if (password !== cfPassword  ) {
+      alert(`please check your password and try again.`);
+      return;
+    } else {
+      if (checkbox) {
+        alert(`signed up successfuly thanks for sign in to our news `);
+        
+      } else { 
+        alert(`signed up successfuly`);
+      }
+    }
+  }
+  return (
+    <>
+      <form id="form" onSubmit={handleSubmit}>
+        <label>
+          Email
+          <input
+              onChange={change} 
+              placeholder="Email"
+              type="email"
+              name="email"
+              value={formData.email}  
+          />
+        </label>
         
         <label>
-
-        <label htmlFor="colors">
-          What's your fsvorite color.
-        </label>
-        <input
-          type="radio"
-          name="employment"
-          id="employed"
-          value="employed"
-          onChange={change}
-        />
-        employed
-        </label>
+          Password
+          <input
+              onChange={change}
+              type="text"
+              name="password"
+              placeholder="Password" 
+              value={formData.password}
+          />
+          </label>
 
         <label>
-        <input
-          type="radio"
-          name="employment"
-          id="full-time"
-          value="full-time"
-          onChange={change}
-        />
-        full-time
+          Confirme Password
+          <input
+              onChange={change}
+              type="text"
+              name="cfPassword"
+              placeholder="Confirme Password" 
+              value={formData.cfPassword}
+          />
         </label>
-
-        <label>
-        <input
-          type="radio"
-          name="employment"
-          id="part-time"
-          value="part-time"
-          onChange={change}
-        />
-          part-time
+        <label className="checkbox">
+          <input     
+              name="checkbox"
+              type="checkbox"
+              checked={formData.checkbox}
+              onChange={change}
+          />
+          I want to join the news letter
         </label>
-
-        <br />
-        <select
-          id="colors"
-          value={formData.colors }
-          onChange={change}
-          name="colors"
-        >
-          {/* <option value="choose a color"   >choose a color</option> */}
-          <option value="red" >red</option>
-          <option value="blue">blue</option>
-          <option value="orange">orange</option>
-          <option value="green">green</option>
-          <option value="yellow">yellow</option>
-          <option value="purpul">purpul</option>
-          <option value="black">black</option>
-        </select>
+          <button type="submit">Sign In</button>
         </form>
-    </div>
+    </>
   )
 }
 

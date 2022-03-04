@@ -3,15 +3,36 @@ body {
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-	background-color: #23252c;
+	background-color: rgb(210, 228, 255);
 }
 
-.card {
-	width: 550px;
-	height: 868px;
-	background-color: #1a1b21;
-  padding:44px 116px;
-	ruby-align: ;
-	background-color: #fbfb00;
-	font-stretch: ;
+form {
+	display:flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 400px;
+	border: 1px solid white;
+	box-shadow: 7px 9px 15px rgba(0, 0, 0,.2); 
+
+}
+label:not(:last-child) {
+	display: block;
+}
+input { 
+	display: block;
+	width: 366px;
+	padding:.5rem 1rem;
+	font-size:1.2rem;
+	
+}
+button { 
+	padding:.5rem 1rem;
+	font-size:1.2rem;
+}
+.checkbox {
+	padding:1rem 0rem;
+}
+.checkbox input { 
+	display:inline-block;
+	width:4%;
 }
